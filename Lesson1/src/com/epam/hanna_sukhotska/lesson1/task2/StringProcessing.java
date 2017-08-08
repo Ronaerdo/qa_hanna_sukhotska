@@ -7,12 +7,14 @@ import java.util.Scanner;
  */
 public class StringProcessing {
     /** Method reads n strings from console */
-    public String[] readStr(int n){
+    public String[] readStr(){
         Scanner scan = new Scanner(System.in); //to read from console
+        System.out.println("Enter n: ");
+        int n = scan.nextInt();
         String[] str = new String[n]; // an array of strings
         for (int i = 0; i < n ; i++) {
             System.out.println("Enter string: ");
-            str[i] = scan.next();
+            str[i] = scan.nextLine();
         }
         scan.close();
         return str;
@@ -26,20 +28,23 @@ public class StringProcessing {
         }
         int avg = sum / str.length; // calculate average length
 
+        int countStrings = 0;
         for (int i = 0; i < str.length; i++) {
-            if (str[i].length() > avg)
+            if (str[i].length() > avg) {
                 System.out.println("Str: " + str[i] + ". Length:" + str[i].length());
+                countStrings++;
+            }
+        }
+
+        if(countStrings == 0){
+            System.out.println("All strings have the same length");
         }
     }
 
     /** Test method*/
     public static void test(){
         StringProcessing sp = new StringProcessing();
-        System.out.println("Enter n: ");
-        Scanner newScan = new Scanner(System.in);
-        int n = newScan.nextInt();
-        String[] str = sp.readStr(n);
+        String[] str = sp.readStr();
         sp.findLengthMoreThanAvg(str);
-        newScan.close();
     }
 }

@@ -1,5 +1,7 @@
 package com.epam.hanna_sukhotska.lesson1.task1;
 
+import java.util.Arrays;
+
 /**
  * @author Hanna Sukhotska
  */
@@ -17,9 +19,7 @@ public class ArraysUtil{
 
     /** Method displays an array in console */
     public void print(int[] array){
-        for (int i = 0; i < array.length ; i++) {
-            System.out.print(array[i] + " ");
-        }
+        System.out.println(Arrays.toString(array));
     }
 
     /** Method returns sum of elements on even positions*/

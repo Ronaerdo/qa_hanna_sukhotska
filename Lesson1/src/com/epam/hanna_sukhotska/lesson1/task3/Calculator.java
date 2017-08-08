@@ -24,7 +24,7 @@ public class Calculator {
 
     /** Divide two numbers */
     public double division(int a, int b){
-        if (a == 0 || b == 0) throw new ArithmeticException("Division on 0");
+        if (b == 0) throw new ArithmeticException("Division on 0");
             return a/b;
     }
 
@@ -42,15 +42,13 @@ public class Calculator {
 
     /** Method parses expression from console */
     public double parseExpression(String expr){
-        String [] args = expr.split(" ");
+        String [] args = expr.split("\\s+");
         try {
             int a = Integer.parseInt(args[0]);
             int b = Integer.parseInt(args[2]);
             char c = args[1].charAt(0);
             return calculate(a, b, c);
-        } catch (ArrayIndexOutOfBoundsException e){
-            throw new IllegalArgumentException("Wrong format of entered string");
-        } catch (NumberFormatException e){
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e){
             throw new IllegalArgumentException("Wrong format of entered string");
         }
     }
