@@ -1,13 +1,14 @@
 package com.epam.hanna_sukhotska.lesson2.task2.house_appliances;
 
-import java.util.Collections;
+import com.epam.hanna_sukhotska.lesson2.task2.house_appliances.appliances.ElectronicAppliance;
+import com.sun.istack.internal.Nullable;
 
 /**
  * Created by sanna on 09.08.2017.
  */
 public class Flat {
 
-    private static final int NUM_OF_APPLIANCES = 10;
+    private static final int NUM_OF_APPLIANCES = 5;
 
     private ElectronicAppliance[] appliances;
     private int countAppliances;
@@ -17,6 +18,11 @@ public class Flat {
         appliances = new ElectronicAppliance[NUM_OF_APPLIANCES];
     }
 
+    public void print(){
+        for (int i = 0; i < countAppliances ; i++) {
+            System.out.println(appliances[i]);
+        }
+    }
     public int getNumOfAppliances(){
         return countAppliances;
     }
@@ -38,13 +44,43 @@ public class Flat {
     }
 
     public void sort(){
-        for(int i = 1; i < appliances.length; i++) {
-            int temp=0;
-            if(x[i-1] > x[i]) {
-                temp = x[i-1];
-                x[i-1] = x[i];
-                x[i] = temp;
+        for (int i = 0; i < countAppliances; i++) {
+            for (int j = 1; j < (countAppliances - i); j++) {
+                ElectronicAppliance temp;
+                if (appliances[j - 1].getPower() > appliances[j].getPower()) {
+                    temp = appliances[j - 1];
+                    appliances[j - 1] = appliances[j];
+                    appliances[j] = temp;
+                }
             }
         }
+    }
+
+    public ElectronicAppliance search(Room room, String name, Integer power, Boolean isPluggedIn){
+        for (int i = 0; i < countAppliances; i++) {
+            if ((name == null || appliances[i].getName().equals(name))
+                    && (appliances[i].getRoom() == room || room == Room.Undefined)
+                    && (power == null || appliances[i].getPower() == power)
+                    && (isPluggedIn == null || appliances[i].isPluggedIn() == isPluggedIn)) {
+                return appliances[i];
+            }
+        }
+        return null;
+    }
+
+    public ElectronicAppliance[] pluggedInAppliances (){
+        Flat temp = new Flat();
+        for (int i = 0; i < countAppliances; i++) {
+            if (appliances[i].isPluggedIn()) {
+                temp.addAppliance(appliances[i]);
+            }
+        }
+        return temp.toArray();
+    }
+
+    public ElectronicAppliance[] toArray(){
+        ElectronicAppliance[] temp = new ElectronicAppliance[countAppliances];
+        System.arraycopy(appliances, 0, temp, 0, countAppliances);
+        return temp;
     }
 }

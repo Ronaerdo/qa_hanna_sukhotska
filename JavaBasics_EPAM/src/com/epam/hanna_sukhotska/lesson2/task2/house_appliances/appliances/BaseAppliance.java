@@ -1,4 +1,6 @@
-package com.epam.hanna_sukhotska.lesson2.task2.house_appliances;
+package com.epam.hanna_sukhotska.lesson2.task2.house_appliances.appliances;
+
+import com.epam.hanna_sukhotska.lesson2.task2.house_appliances.Room;
 
 /**
  * Created by sanna on 09.08.2017.
@@ -27,5 +29,10 @@ public abstract class BaseAppliance implements ElectronicAppliance {
     }
 
     public abstract void doWork();
+
+    @Override
+    public String toString(){
+        return name + ", power: " + power + ", room: " + room + ", state: " + (pluggedInState ? "" : "not ") + "plugged in";
+    }
 
 }

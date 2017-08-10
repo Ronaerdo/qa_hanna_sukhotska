@@ -1,6 +1,6 @@
-package com.epam.hanna_sukhotska.lesson2.task2.house_appliances.flat_appliances;
+package com.epam.hanna_sukhotska.lesson2.task2.house_appliances.appliances.flat_appliances;
 
-import com.epam.hanna_sukhotska.lesson2.task2.house_appliances.BaseAppliance;
+import com.epam.hanna_sukhotska.lesson2.task2.house_appliances.appliances.BaseAppliance;
 import com.epam.hanna_sukhotska.lesson2.task2.house_appliances.Room;
 
 /**
