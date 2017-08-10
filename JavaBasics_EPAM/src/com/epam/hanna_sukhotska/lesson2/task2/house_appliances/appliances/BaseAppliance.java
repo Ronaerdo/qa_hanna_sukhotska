@@ -11,6 +11,10 @@ public abstract class BaseAppliance implements ElectronicAppliance {
     protected boolean pluggedInState;
     protected Room room;
 
+    /**
+     * Method changes state of appliance
+     * @param flag state is changed on the value of flag
+     */
     public void plugIn(boolean flag){
         pluggedInState = flag;
     }
@@ -23,7 +27,6 @@ public abstract class BaseAppliance implements ElectronicAppliance {
     public boolean isPluggedIn(){
         return pluggedInState;
     }
-
     public Room getRoom(){
         return room;
     }

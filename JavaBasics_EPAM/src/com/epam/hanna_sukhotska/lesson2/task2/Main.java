@@ -7,20 +7,40 @@ import com.epam.hanna_sukhotska.lesson2.task2.house_appliances.appliances.Electr
 import com.epam.hanna_sukhotska.lesson2.task2.house_appliances.appliances.flat_appliances.*;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by sanna on 08.08.2017.
  */
 public class Main {
-    public static void main(String[] args) {
-        /*Calculator c = new Calculator();
-        try {
-            c.readAndCalculateExpression();
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-            c.readAndCalculateExpression();
-        }*/
 
+    private static final String STOP_KEYWORD = "--q";
+
+    /**
+     * Method for testing calculator
+     */
+
+    public static void testCalculator(){
+        Calculator c = new Calculator();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter expression to calculate: ");
+        String expr = scanner.nextLine();
+        while (!expr.equals(STOP_KEYWORD)) {
+            try {
+                System.out.println("Result: " + c.calculateExpression(expr));
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println("Enter expression to calculate: (enter \"--q\"  to quit)");
+            expr = scanner.nextLine();
+        }
+        scanner.close();
+    }
+
+    /**
+     * Method to test flat appliances
+     */
+    public static void testFlat(){
         Flat f = new Flat();
         f.addAppliance(new Blender());
         f.addAppliance(new Fridge());
@@ -39,5 +59,13 @@ public class Main {
         System.out.println();
         System.out.println("Found appliance with given name: " + a);
         System.out.println("Plugged in appliances in your flat: " + Arrays.toString(f.pluggedInAppliances()));
+        System.out.println();
+        System.out.println("Now you have such appliances in your flat: ");
+        f.removeAppliance("Fridge Nord");
+        f.print();
+    }
+    public static void main(String[] args) {
+        testCalculator();
+      //testFlat();
     }
 }

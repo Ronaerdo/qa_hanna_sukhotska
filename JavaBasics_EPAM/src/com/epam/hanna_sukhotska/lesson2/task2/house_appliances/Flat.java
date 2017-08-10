@@ -18,6 +18,9 @@ public class Flat {
         appliances = new ElectronicAppliance[NUM_OF_APPLIANCES];
     }
 
+    /**
+     * Method prints array of appliances
+     */
     public void print(){
         for (int i = 0; i < countAppliances ; i++) {
             System.out.println(appliances[i]);
@@ -27,6 +30,10 @@ public class Flat {
         return countAppliances;
     }
 
+    /**
+     * Method adds new appliance to flat
+     * @param e electronic appliance to add to array
+     */
     public void addAppliance(ElectronicAppliance e){
         if (countAppliances >= appliances.length)
         {
@@ -38,11 +45,23 @@ public class Flat {
         countAppliances++;
     }
 
-    public void removeAppliance(int number){
-        System.arraycopy(appliances, number + 1, appliances, number, countAppliances - number);
-        countAppliances--;
+    /**
+     * Method removes element from array of appliances
+     * @param name the name of appliance you want to delete
+     */
+    public void removeAppliance(String name){
+        for (int i = 0; i < countAppliances; i++) {
+            if (appliances[i].getName().equals(name)){
+                System.arraycopy(appliances, i + 1, appliances, i, countAppliances - i);
+                countAppliances--;
+                return;
+            }
+        }
     }
 
+    /**
+     * Method sorts the array of appliances in the flat
+     */
     public void sort(){
         for (int i = 0; i < countAppliances; i++) {
             for (int j = 1; j < (countAppliances - i); j++) {
@@ -56,6 +75,14 @@ public class Flat {
         }
     }
 
+    /**
+     * Method search the appliance with given parameters in the flat
+     * @param room
+     * @param name
+     * @param power
+     * @param isPluggedIn
+     * @return electronic appliance with given value of parameters
+     */
     public ElectronicAppliance search(Room room, String name, Integer power, Boolean isPluggedIn){
         for (int i = 0; i < countAppliances; i++) {
             if ((name == null || appliances[i].getName().equals(name))
@@ -68,6 +95,10 @@ public class Flat {
         return null;
     }
 
+    /**
+     *
+      * @return list of plugged in appliances
+     */
     public ElectronicAppliance[] pluggedInAppliances (){
         Flat temp = new Flat();
         for (int i = 0; i < countAppliances; i++) {
