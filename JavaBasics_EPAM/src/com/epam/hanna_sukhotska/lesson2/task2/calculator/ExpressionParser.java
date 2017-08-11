@@ -1,5 +1,6 @@
 package com.epam.hanna_sukhotska.lesson2.task2.calculator;
 
+
 /**
  * Created by sanna on 08.08.2017.
  */
@@ -8,7 +9,7 @@ public class ExpressionParser {
 
     private int a;
     private int b;
-    private char operator;
+    private String operator;
 
     public int getFirstOperand() {
         return a;
@@ -18,7 +19,7 @@ public class ExpressionParser {
         return b;
     }
 
-    public char getOperator() {
+    public String getOperator() {
         return operator;
     }
 
@@ -34,7 +35,7 @@ public class ExpressionParser {
         try {
             a = Integer.parseInt(args[0]);
             b = Integer.parseInt(args[2]);
-            operator = args[1].charAt(0);
+            operator = args[1];
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e){
             throw new IllegalArgumentException("Wrong format of entered string");
         }

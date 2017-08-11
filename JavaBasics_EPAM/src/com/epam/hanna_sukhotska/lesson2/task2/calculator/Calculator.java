@@ -9,8 +9,12 @@ import java.util.Scanner;
  */
 public class Calculator {
 
-    private OperationCalculator getCalc(int a, int b, char operator){
-        return (Operator.valueOf(operator).getCalculator(a, b));
+    private OperationCalculator getCalc(int a, int b, String operator){
+        Operator op = Operator.valueOfString(operator);
+        if (op == null){
+            throw new IllegalArgumentException("Wrong operator");
+        }
+        return op.getCalculator(a, b);
     }
     /**
      *

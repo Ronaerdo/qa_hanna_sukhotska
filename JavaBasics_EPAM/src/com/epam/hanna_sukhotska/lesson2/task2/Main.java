@@ -28,7 +28,7 @@ public class Main {
         while (!expr.equals(STOP_KEYWORD)) {
             try {
                 System.out.println("Result: " + c.calculateExpression(expr));
-            } catch (Exception e) {
+            } catch (IllegalArgumentException | NullPointerException e) {
                 System.out.println(e.getMessage());
             }
             System.out.println("Enter expression to calculate: (enter \"--q\"  to quit)");
